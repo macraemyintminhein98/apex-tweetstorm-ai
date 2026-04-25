@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TweetStorm AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="bg-gray-800 rounded-lg shadow-xl p-8 max-w-2xl w-full">
+        <h1 class="text-4xl font-bold mb-4 text-center">TweetStorm AI ✨</h1>
+        <p class="text-lg text-gray-400 mb-6 text-center">Turn your ideas into engaging Twitter threads, instantly!</p>
+        
+        <div id="app-content">
+            <textarea id="input-text" class="w-full p-3 resize-y h-32 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="What's your big idea? (e.g., '5 tips for remote work productivity')"></textarea>
+            <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">Generate Tweet Storm</button>
+        </div>
+
+        <div id="output-section" class="hidden mt-6">
+            <h2 class="text-2xl font-semibold mb-3">Your Tweet Storm:</h2>
+            <div id="tweet-output" class="bg-gray-700 p-4 rounded-md whitespace-pre-wrap text-gray-200"></div>
+            <button id="copy-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300">Copy to Clipboard</button>
+            <button id="new-storm-btn" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md mt-2 transition duration-300">New Storm</button>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-8">&copy; 2023 APEX Building. All rights reserved.</p>
+    </div>
+
+    <script>
+        const inputText = document.getElementById('input-text');
+        const generateBtn = document.getElementById('generate-btn');
+        const tweetOutput = document.getElementById('tweet-output');
+        const copyBtn = document.getElementById('copy-btn');
+        const newStormBtn = document.getElementById('new-storm-btn');
+        const appContent = document.getElementById('app-content');
+        const outputSection = document.getElementById('output-section');
+
+        generateBtn.addEventListener('click', async () => {
+            // In a real app, this would call a backend API that uses OpenAI.
+            // For this static HTML, we'll simulate.
+            tweetOutput.innerText = "Generating your awesome tweet storm... Please wait.\n\n(This is a placeholder. In a real app, OpenAI would generate the content and Stripe would handle payment.)";
+            appContent.classList.add('hidden');
+            outputSection.classList.remove('hidden');
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Placeholder generated content
+                tweetOutput.innerText = "🚀 Unlock Twitter's potential!\n\nStruggling to craft engaging threads? Our AI-powered tool turns your ideas into viral tweet storms instantly. #ContentCreator #TwitterTips\n\n💡 Get more eyes on your message, drive engagement, and build your brand presence without the hassle of manual writing.\n\n⏰ Save hours of content creation. Focus on what you do best, let our AI handle the rest. #AItools #Productivity\n\n🔗 Ready to supercharge your Twitter? Try TweetStorm AI today and transform your feed! [LinkToYourApp.com]";
+            }, 2000);
+           
+        });
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(tweetOutput.innerText);
+            alert('Tweet storm copied to clipboard!');
+        });
+
+        newStormBtn.addEventListener('click', () => {
+            inputText.value = '';
+            tweetOutput.innerText = '';
+            appContent.classList.remove('hidden');
+            outputSection.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
